@@ -1,16 +1,12 @@
 # Call API
 
-<div role="main" class="col-md-9">
-
-<div class="bs-docs-section">
-
 ## Знакомство
 
 ### Введение
 
 Настоящий документ описывает Call API, которое позволяет совершать звонки и управлять ими.
 
-<div class="bs-callout bs-callout-info">Управлять можно так же звонками, которые поступили на виртуальную АТС. Для этого необходимо получить уникальный идентификатор сессии звонка. Его можно получить с помощью [сервера уведомлений](http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/), [REST API](https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah).</div>
+Управлять можно так же звонками, которые поступили на виртуальную АТС. Для этого необходимо получить уникальный идентификатор сессии звонка. Его можно получить с помощью [сервера уведомлений](http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/), [REST API](https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah).
 
 API реализован на основе спецификации [JSON-RPC 2.0](http://www.jsonrpc.org/specification) без поддержки групповых операций.
 
@@ -65,7 +61,7 @@ API реализован на основе спецификации [JSON-RPC 2.
 | Формат | MIME Type |
 | JSON | application/json |
 
-<div class="bs-callout bs-callout-info">По умолчанию используется формат JSON. Заголовок Accept игнорируется</div>
+По умолчанию используется формат JSON. Заголовок Accept игнорируется
 
 ### Базовый URL для доступа к API
 
@@ -89,9 +85,9 @@ https://callapi.comagic.ru/<version>
 
 Call API поддерживает версионность. Версия указывается в базовом URL как vX.Y, где X - номер мажорной версии, Y - номер минорной версии
 
-<div class="bs-callout bs-callout-info">Версия должна указываться через точку, к примеру 4.0</div>
+Версия должна указываться через точку, к примеру 4.0
 
-<div class="bs-callout bs-callout-info">Если была выпущена новая версия, то старая считается устаревшей и соответственно при обращении к старой версии API в мета-параметрах (см. раздел [Мета-параметры](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#meta-parameters)) будет возвращаться параметр `current_version_depricated` со значением `true`. Это говорит о том, что в ближайшие пару месяцев старая версия может стать недоступной.</div>
+Если была выпущена новая версия, то старая считается устаревшей и соответственно при обращении к старой версии API в мета-параметрах (см. раздел [Мета-параметры](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#meta-parameters)) будет возвращаться параметр `current_version_depricated` со значением `true`. Это говорит о том, что в ближайшие пару месяцев старая версия может стать недоступной.
 
 Пример:
 
@@ -99,16 +95,14 @@ Call API поддерживает версионность. Версия ука�
 https://callapi.comagic.ru/v4.0 \b https://callapi.comagic.ru/v4.0
 ```
 
-<div class="bs-callout bs-callout-info">Максимальное количество поддерживаемых версий - 2
-Период поддержки устаревшей версии 2 месяца</div>
+Максимальное количество поддерживаемых версий - 2
+Период поддержки устаревшей версии 2 месяца
 
 ### Лимиты и ограничения
 
 Лимиты построены по бальной системе, т.е каждый метод имеет свой вес в баллах.
 
-<div class="bs-callout bs-callout-info">Баллы списываются только за успешные запросы, т.е в [отчете по запросам](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#) он помечен как успешный. Успешным считается запрос, если в `result` был возвращен статус `success` = `true` или идентификатор сессии звонка</div>
-
-<div class="bs-callout bs-callout-info">
+Баллы списываются только за успешные запросы, т.е в [отчете по запросам](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#) он помечен как успешный. Успешным считается запрос, если в `result` был возвращен статус `success` = `true` или идентификатор сессии звонка
 
 Лимиты привязаны к компоненту `Call API Базовый набор` (см. [Компоненты](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#сomponents)) и учитываются в зависимости от стоимости метода в баллах
 
@@ -118,8 +112,6 @@ https://callapi.comagic.ru/v4.0 \b https://callapi.comagic.ru/v4.0
 *   Если возвращается ошибка на вызов метода, который не существует - мнемоника "method_not_found";
 *   Если возвращается ошибка связанная с аутентификацией - "access_token_blocked", "access_token_invalid", "access_token_expired", "auth_error";
 *   Если возвращается ошибка при запросе с IP адреса, который не в белом списке - мнемоника "ip_not_whitelisted".
-
-</div>
 
 Информация о лимитах возвращается в мета-параметрах (см. [Мета-параметры](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#meta-parameters))
 
@@ -133,21 +125,21 @@ https://callapi.comagic.ru/v4.0 \b https://callapi.comagic.ru/v4.0
 *   Баллов Call API в день;
 *   Длина TTS сообщения.
 
-<div class="bs-callout bs-callout-info">Отсутствие лимитов в личном кабинете может быть связанно с тем, что имеются ограничения в тарифном плане. В этом случае необходимо связаться с персональным менеджером или службой технической поддержки.</div>
+Отсутствие лимитов в личном кабинете может быть связанно с тем, что имеются ограничения в тарифном плане. В этом случае необходимо связаться с персональным менеджером или службой технической поддержки.
 
 #### Управление безопасностью звонка
 
 Управлять безопасностю звонков (мобильные, междугородние, международные направления) можно в личном кабинете на странице "Аккаунт" -> "Правила и настройки безопасности" -> "API".
 
-<div class="bs-callout bs-callout-info">По умолчанию запрещено международное направление, остальные направления разрешены.</div>
+По умолчанию запрещено международное направление, остальные направления разрешены.
 
 Разрешения для направлений звонка разбиты по компонентам Call API (см. [Компоненты](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#сomponents))
 
 ### Мета-параметры
 
-<div class="bs-callout bs-callout-info">Возвращаются в ответ на вызов метода. Присутствуют как в ошибочном, так и в успешном ответе</div>
+Возвращаются в ответ на вызов метода. Присутствуют как в ошибочном, так и в успешном ответе
 
-<div class="bs-callout bs-callout-info">Параметр `api_version` возвращается только для версий которые `deprecated`.</div>
+Параметр `api_version` возвращается только для версий которые `deprecated`.
 
 Описание параметров
 
@@ -164,26 +156,23 @@ https://callapi.comagic.ru/v4.0 \b https://callapi.comagic.ru/v4.0
 
 JSON структура
 
-<figure class="highlight">
-
-<pre>                       `<span class="cm-property"><span class="hljs-string">"metadata"</span></span>: {
-  <span class="cm-property"><span class="hljs-string">"api_version"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"current_version_depricated"</span></span>: <span class="cm-string"><span class="hljs-string">"boolean"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"current_version"</span></span>: <span class="cm-string"><span class="hljs-string">"string"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"latest_version"</span></span>: <span class="cm-string"><span class="hljs-string">"string"</span></span>
+```json
+"metadata": {
+  "api_version": {
+    "current_version_depricated": "boolean",
+    "current_version": "string",
+    "latest_version": "string"
   },
-  <span class="cm-property"><span class="hljs-string">"limits"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"day_limit"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"day_remaining"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"day_reset"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"minute_limit"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"minute_remaining"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"minute_reset"</span></span>: <span class="cm-string"><span class="hljs-string">"number"</span></span>
+  "limits": {
+    "day_limit": "number",
+    "day_remaining": "number",
+    "day_reset": "number",
+    "minute_limit": "number",
+    "minute_remaining": "number",
+    "minute_reset": "number"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ### Компоненты
 
@@ -197,19 +186,19 @@ JSON структура
 
 В личном кабинете "Аккаунт" -> "Управление пользователями" при подключённом компоненте `Call API Базовый набор` появляется возможность выбора нового набора прав доступа в виде чек-бокса `Доступ к Call API`.
 
-<div class="bs-callout bs-callout-info">Все эти действия могут быть выполнены только администратором.</div>
+> Все эти действия могут быть выполнены только администратором.
 
 #### Доступ по логину и паролю
 
 Используется аутентификация по логину и паролю пользователя, в ответе будет получен ключ доступа к Call API
 
-<div class="bs-callout bs-callout-info">Время жизни сессии по умолчанию 1 час.</div>
+> Время жизни сессии по умолчанию 1 час.
 
 #### Доступ по ключу
 
 В настройках пользователя есть возможность включить доступ по ключу, для этого необходимо в настройках пользователя поставить галку "Доступ по ключу". При этом, будьте внимательны: ключ виден в интерфейсе и доступен для копирования только в момент генерации, после сохранения настроек вы сможете его увидеть только в коде своего приложения или другом месте, куда вы сохранили этот ключ.
 
-<div class="bs-callout bs-callout-info">Ключи могут действовать до определенной даты или быть бессрочными, в зависимости от ваших настроек.</div>
+> Ключи могут действовать до определенной даты или быть бессрочными, в зависимости от ваших настроек.
 
 ### Статистика и отчёты
 
@@ -222,24 +211,14 @@ JSON структура
 
 Полную информацию по звонку можно найти в "Отчеты" -> "Обращения" -> "Звонки" с фильтрацией по параметру "Индентификатор сессии звонка"
 
-<div class="bs-callout bs-callout-info">Если в фильтрах отсутствует параметр "Идентификатор сессии звонка", то его нужно добавить в доступные столбцы отчета</div>
-
-</div>
-
-<div class="bs-docs-section">
+> Если в фильтрах отсутствует параметр "Идентификатор сессии звонка", то его нужно добавить в доступные столбцы отчета
 
 ## Общее
 
 ### Общие поля для всех методов
 
 | Название | Тип | Обязательный | Допустимые значения | Описание |
-| id | string или number | да | 
-
-Уникальный идентификатор запроса к API.
-
-<div class="bs-callout bs-callout-info">Не передается в уведомлениях. Фигурирует только в [Статистика и отчеты](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-users-statistics) параметр `Идентификатор запроса`</div>
-
- |
+| id | string или number | да | Уникальный идентификатор запроса к API. <blockquote>Не передается в уведомлениях. Фигурирует только в [Статистика и отчеты](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-users-statistics) параметр `Идентификатор запроса`</blockquote> |
 | method | string | да | Вызываемый метод (см. [Список методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list)) |
 | jsonrpc | string | да | 2.0 | Номер спецификации JSON-RPC |
 | params | object | да | Содержит тело запроса к API. В зависимости от вызываемого метода тело запроса меняется. |
@@ -247,10 +226,6 @@ JSON структура
 ### Диаграмма состояний звонка
 
 [![](./index-doc-call-api_files/state-diagram-call.jpg)](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#)
-
-</div>
-
-<div class="bs-docs-section">
 
 ## Аутентификация
 
@@ -272,44 +247,38 @@ JSON структура
 | access_token | string | да | Ключ сессии аутентификации |
 | expire_at | number | да | Timestamp когда выданный токен перестанет быть валидным |
 
-<div class="bs-callout bs-callout-info">Время жизни полученного ключа сессии аутентификации после вызова метода `login.user` - 1 час. По истечению времени жизни ключа сессии его необходимо запрашивать заново, т.е. вызывать метод `login.user`.</div>
+> Время жизни полученного ключа сессии аутентификации после вызова метода `login.user` - 1 час. По истечению времени жизни ключа сессии его необходимо запрашивать заново, т.е. вызывать метод `login.user`.
 
-<div class="bs-callout bs-callout-info">Для совершения запросов к API возможно использование постоянного ключа аутентификации, который доступен в личном кабинете (см. [Доступ по ключу](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-users-access-key)).</div>
+> Для совершения запросов к API возможно использование постоянного ключа аутентификации, который доступен в личном кабинете (см. [Доступ по ключу](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-users-access-key)).
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"login.user"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"login"</span></span>: <span class="cm-string"><span class="hljs-string">"your_login"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"password"</span></span>: <span class="cm-string"><span class="hljs-string">"your_password"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "method": "login.user",
+  "params": {
+    "login": "your_login",
+    "password": "your_password"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"expire_at"</span></span>: <span class="cm-string"><span class="hljs-number">1475853742</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+      "expire_at": 1475853742
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ### Выход
 
@@ -324,40 +293,30 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"logout.user"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "method": "logout.user",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": true
     }
   }
-}`
-                    </pre>
-
-</figure>
-
-</div>
-
-<div class="bs-docs-section">
+}
+```
 
 ## Группа методов создания звонков
 
@@ -399,7 +358,7 @@ JSON структура
 *   После поднятия трубки сотрудником из параметра `employee` сообщение будет проиграно до конца обоим и далее состоится разговор, если параметр `switch_at_once` имеет значение `false`;
 *   Если у кого-то проигрывание сообщения закончилось раньше, то он слушает сообщение, заданное в параметре `media_file_id`.
 
-<div class="bs-callout bs-callout-info">Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает</div>
+> Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает
 
  |
 | early_switching | boolean | нет | true, false | 
@@ -410,7 +369,7 @@ JSON структура
 
 К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра `early_switching` = `true`, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр `early_switching` = `false`, то оператор будет слушать музыку, которая задана в параметре "media_file_id"
 
-<div class="bs-callout bs-callout-info">Параметр может иметь значение `true` если только параметр `first_call` имеет значение `employee` и параметр `switch_at_once` имеет значение значение `true`. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел [коды ошибок](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call-errors)).</div>
+> Параметр может иметь значение `true` если только параметр `first_call` имеет значение `employee` и параметр `switch_at_once` имеет значение значение `true`. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел [коды ошибок](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call-errors)).
 
  |
 | media_file_id | number | нет | 
@@ -419,14 +378,14 @@ JSON структура
 
 Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так и пользовательским. Получить список системных или пользовательских файлов можно с помощью REST API - [Получение списка пользовательских файлов](https://www.comagic.ru/support/article/137/#media_files), [Получение списка системных файлов](https://www.comagic.ru/support/article/137/#system_media_files).
 
-<div class="bs-callout bs-callout-info">Проигрывается всегда тому плечу, для которого не задан один из параметров `contact_message` или `employee_message`</div>
+> Проигрывается всегда тому плечу, для которого не задан один из параметров `contact_message` или `employee_message`
 
  |
 | virtual_phone_number | string | да | 
 
 Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному стандарту E.164 (например, `74993720692`). Всегда используется в качестве номера звонящего при звонке на номер, указанный в параметре `contact`. Используется в качестве номера звонящего при звонке на номер, указанный в параметре `employee`, если параметр `show_virtual_phone_number` имеет значение `true`. Виртуальные номера можно получить с помощью REST API метода - [Получение списка виртуальных номеров](https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov)
 
-<div class="bs-callout bs-callout-info">В качестве виртуального номера запрещено использовать 800-е номера</div>
+> В качестве виртуального номера запрещено использовать 800-е номера
 
  |
 | show_virtual_phone_number | boolean | нет | true, false | 
@@ -440,7 +399,7 @@ JSON структура
 
 Номер абонента на который совершается вызов. Формат номера должен соответствовать международному стандарту E.164 (например, `79091234567`). В качестве номера может быть так же указан SIP номер сотрудника.
 
-<div class="bs-callout bs-callout-info">Внутренние номера сотрудников не поддерживаются.</div>
+> Внутренние номера сотрудников не поддерживаются.
 
  |
 | external_id | string | нет | Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой. |
@@ -451,7 +410,7 @@ JSON структура
 | employee | object | да | Сотрудник с которым будет соединён абонент, указанный в параметре `contact`. |
  id | number | да | Уникальный идентификатор сотрудника. Данный идентификатор можно получить с помощью REST API - [Получение информации о сотруднике](https://www.comagic.ru/support/article/137/#employee)
 
-<div class="bs-callout bs-callout-info">Если не указан параметр `phone_number`, то будет совершен последовательный обзвон всех активных номеров сотрудника.</div>
+> Если не указан параметр `phone_number`, то будет совершен последовательный обзвон всех активных номеров сотрудника.
 
  |
  phone_number | string | нет | 
@@ -464,7 +423,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `contact`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`
 
  |
  type | string | да | media, tts | 
@@ -478,7 +437,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 | Сообщение для проигрывания абоненту, который задан в параметре `employee` |
@@ -486,7 +445,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `employee`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`
 
  |
  type | string | да | media, tts | 
@@ -500,7 +459,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
@@ -511,57 +470,51 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"start.employee_call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"first_call"</span></span>: <span class="cm-string"><span class="hljs-string">"employee"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"switch_at_once"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-    <span class="cm-property"><span class="hljs-string">"media_file_id"</span></span>: <span class="cm-string"><span class="hljs-number">2701</span></span>,
-    <span class="cm-property"><span class="hljs-string">"show_virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-literal">false</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74993720692"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-string">"334otr01"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">".1.2.3"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"employee"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-number">25</span></span>,
-      <span class="cm-property"><span class="hljs-string">"phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000001"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "start.employee_call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "first_call": "employee",
+    "switch_at_once": true,
+    "media_file_id": 2701,
+    "show_virtual_phone_number": false,
+    "virtual_phone_number": "74993720692",
+    "external_id": "334otr01",
+    "dtmf_string": ".1.2.3",
+    "direction": "in",
+    "contact": "79260000000",
+    "employee": {
+      "id": 25,
+      "phone_number": "79260000001"
     },
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"tts"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"Привет"</span></span>
+    "contact_message": {
+      "type": "tts",
+      "value": "Привет"
     },
-    <span class="cm-property"><span class="hljs-string">"employee_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"media"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"2561"</span></span>
+    "employee_message": {
+      "type": "media",
+      "value": "2561"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">237859081</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "call_session_id": 237859081
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -591,7 +544,7 @@ JSON структура
 
 Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному стандарту E.164 (например, `74993720692`). Всегда используется в качестве номера звонящего при звонке на номер, указанный в параметре `contact`. Используется в качестве номера звонящего при звонке на сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги". Виртуальные номера можно получить с помощью REST API метода - [Получение списка виртуальных номеров](https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov)
 
-<div class="bs-callout bs-callout-info">В качестве виртуального номера запрещено использовать 800-е номера</div>
+> В качестве виртуального номера запрещено использовать 800-е номера
 
  |
 | external_id | string | нет | Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой. |
@@ -600,9 +553,9 @@ JSON структура
 
 Номер абонента на который совершается вызов. Формат номера должен соответствовать международному стандарту E.164 (например, `79091234567`). В качестве номера может быть так же указан SIP номер сотрудника.
 
-<div class="bs-callout bs-callout-info">Если не задан параметр `contact_message`, то абоненту будет проигрываться системная мелодия - `Музыка переадресации (dialing_music)`</div>
+> Если не задан параметр `contact_message`, то абоненту будет проигрываться системная мелодия - `Музыка переадресации (dialing_music)`
 
-<div class="bs-callout bs-callout-info">Внутренние номера сотрудников не поддерживаются.</div>
+> Внутренние номера сотрудников не поддерживаются.
 
  |
 | first_call | string | да | contact, employee | 
@@ -633,7 +586,7 @@ JSON структура
 *   После поднятия трубки сотрудником сообщение будет проиграно до конца обоим и далее состоится разговор, если параметр `switch_at_once` имеет значение `false`;
 *   Если у кого-то проигрывание сообщения закончилось раньше, то он слушает системную мелодию - `Музыка переадресации (dialing_music)`.
 
-<div class="bs-callout bs-callout-info">Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает</div>
+> Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает
 
  |
 | scenario_id | number | да | Уникальный идентификатор сценария, который может быть получен с помощью REST API - [Получение списка сценариев](https://www.comagic.ru/support/article/137/#poluchenie-spiska-scenariev). |
@@ -644,7 +597,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `contact`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - `Музыка переадресации (dialing_music)`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - `Музыка переадресации (dialing_music)`
 
  |
  type | string | да | media, tts | 
@@ -658,7 +611,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
@@ -669,48 +622,42 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"start.scenario_call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74993720692"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-string">"34rty567"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">"..1.2.3"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"first_call"</span></span>: <span class="cm-string"><span class="hljs-string">"employee"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"switch_at_once"</span></span>: <span class="cm-string"><span class="hljs-literal">false</span></span>,
-    <span class="cm-property"><span class="hljs-string">"scenario_id"</span></span>: <span class="cm-string"><span class="hljs-number">23456</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"media"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"237"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "start.scenario_call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "virtual_phone_number": "74993720692",
+    "external_id": "34rty567",
+    "dtmf_string": "..1.2.3",
+    "contact": "79260000000",
+    "first_call": "employee",
+    "switch_at_once": false,
+    "scenario_id": 23456,
+    "direction": "in",
+    "contact_message": {
+      "type": "media",
+      "value": "237"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">234568</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "call_session_id": 234568
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -739,7 +686,7 @@ JSON структура
 
 Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному стандарту E.164 (например, `74993720692`). Всегда используется в качестве номера звонящего при звонке на номер, указанный в параметре `contact`. Используется в качестве номера звонящего при звонке на сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги". Виртуальные номера можно получить с помощью REST API метода - [Получение списка виртуальных номеров](https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov)
 
-<div class="bs-callout bs-callout-info">В качестве виртуального номера запрещено использовать 800-е номера</div>
+> В качестве виртуального номера запрещено использовать 800-е номера
 
  |
 | external_id | string | нет | Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой. |
@@ -750,9 +697,9 @@ JSON структура
 
 Номер абонента на который совершается вызов. Формат номера должен соответствовать международному стандарту E.164 (например, `79091234567`). В качестве номера может быть так же указан SIP номер сотрудника.
 
-<div class="bs-callout bs-callout-info">Если не задан параметр `contact_message`, то абоненту будет проигрываться системная мелодия - `Музыка переадресации (dialing_music)`</div>
+> Если не задан параметр `contact_message`, то абоненту будет проигрываться системная мелодия - `Музыка переадресации (dialing_music)`
 
-<div class="bs-callout bs-callout-info">Внутренние номера сотрудников не поддерживаются.</div>
+> Внутренние номера сотрудников не поддерживаются.
 
  |
 | first_call | string | да | contact, employee | 
@@ -783,7 +730,7 @@ JSON структура
 *   После поднятия трубки сотрудником сообщение будет проиграно до конца обоим и далее состоится разговор, если параметр `switch_at_once` имеет значение `false`;
 *   Если у кого-то проигрывание сообщения закончилось раньше, то он слушает системную мелодию - `Музыка переадресации (dialing_music)`.
 
-<div class="bs-callout bs-callout-info">Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает</div>
+> Если в параметре `contact_message type` имеет значение `tts`, то параметр `switch_at_once=true` не работает
 
  |
 | Сообщение для проигрывания абоненту, который задан в параметре `contact` |
@@ -791,7 +738,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `contact`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - `Музыка переадресации (dialing_music)`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - `Музыка переадресации (dialing_music)`
 
  |
  type | string | да | media, tts | 
@@ -805,7 +752,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
@@ -816,48 +763,42 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"start.vnumber_call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74993720692"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-string">"34rty567"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">"..1.2.3"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"first_call"</span></span>: <span class="cm-string"><span class="hljs-string">"employee"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"switch_at_once"</span></span>: <span class="cm-string"><span class="hljs-literal">false</span></span>,
-    <span class="cm-property"><span class="hljs-string">"show_virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"media"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"237"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "start.vnumber_call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "virtual_phone_number": "74993720692",
+    "external_id": "34rty567",
+    "dtmf_string": "..1.2.3",
+    "direction": "in",
+    "contact": "79260000000",
+    "first_call": "employee",
+    "switch_at_once": false,
+    "show_virtual_phone_number": true,
+    "contact_message": {
+      "type": "media",
+      "value": "237"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">123467589</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "call_session_id": 123467589
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -878,7 +819,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения абоненту вызов завершается.</div>
+> После окончания проигрывания сообщения абоненту вызов завершается.
 
 #### Параметры запроса
 
@@ -888,7 +829,7 @@ JSON структура
 
 Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному стандарту E.164 (например, `74993720692`). Всегда используется в качестве номера звонящего при звонке на номер, указанный в параметре `contact`. Виртуальные номера можно получить с помощью REST API метода - [Получение списка виртуальных номеров](https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov)
 
-<div class="bs-callout bs-callout-info">В качестве виртуального номера запрещено использовать 800-е номера</div>
+> В качестве виртуального номера запрещено использовать 800-е номера
 
  |
 | external_id | string | нет | Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой. |
@@ -899,7 +840,7 @@ JSON структура
 
 Номер абонента на который совершается вызов. Формат номера должен соответствовать международному стандарту E.164 (например, `79091234567`). В качестве номера может быть так же указан SIP номер сотрудника.
 
-<div class="bs-callout bs-callout-info">Внутренние номера сотрудников не поддерживаются.</div>
+> Внутренние номера сотрудников не поддерживаются.
 
  |
 | dialing_timeout | number | нет | до 120 секунд | Значение по умолчанию `30`. Время ожидания ответа от номера, заданного в параметре `contact`, если ответ не был получен, то вызов завершается. Время задаётся в секундах. |
@@ -920,7 +861,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
@@ -931,46 +872,40 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"start.informer_call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74993720692"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-string">"34rty567"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">"..1.2.3"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dialing_timeout"</span></span>: <span class="cm-string"><span class="hljs-number">25</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"tts"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"Тестовое сообщение"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "start.informer_call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "virtual_phone_number": "74993720692",
+    "external_id": "34rty567",
+    "dtmf_string": "..1.2.3",
+    "direction": "in",
+    "dialing_timeout": 25,
+    "contact": "79260000000",
+    "contact_message": {
+      "type": "tts",
+      "value": "Тестовое сообщение"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">1238694</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "call_session_id": 1238694
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1015,7 +950,7 @@ JSON структура
 
 К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра `early_switching` = `true`, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр `early_switching` = `false`, то оператор будет слушать музыку, которая задана в параметре "media_file_id"
 
-<div class="bs-callout bs-callout-info">Параметр может иметь значение `true` если только параметр `first_call` имеет значение `operator` и параметр `switch_at_once` имеет значение значение `true`. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел [коды ошибок](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-simple-call-errors)).</div>
+> Параметр может иметь значение `true` если только параметр `first_call` имеет значение `operator` и параметр `switch_at_once` имеет значение значение `true`. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел [коды ошибок](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-simple-call-errors)).
 
  |
 | media_file_id | number | нет | 
@@ -1024,14 +959,14 @@ JSON структура
 
 Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так и пользовательским. Получить список системных или пользовательских файлов можно с помощью REST API - [Получение списка пользовательских файлов](https://www.comagic.ru/support/article/137/#media_files), [Получение списка системных файлов](https://www.comagic.ru/support/article/137/#system_media_files).
 
-<div class="bs-callout bs-callout-info">Проигрывается всегда тому плечу, для которого не задан один из параметров `contact_message` или `operator_message`</div>
+> Проигрывается всегда тому плечу, для которого не задан один из параметров `contact_message` или `operator_message`
 
  |
 | virtual_phone_number | string | да | 
 
 Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному стандарту E.164 (например, `74993720692`). Всегда используется в качестве номера звонящего при звонке на номер, указанный в параметре `contact`. Используется в качестве номера звонящего при звонке на номер, указанный в параметре `operator`, если параметр `show_virtual_phone_number` имеет значение `true`. Виртуальные номера можно получить с помощью REST API метода - [Получение списка виртуальных номеров](https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov)
 
-<div class="bs-callout bs-callout-info">В качестве виртуального номера запрещено использовать 800-е номера</div>
+> В качестве виртуального номера запрещено использовать 800-е номера
 
  |
 | show_virtual_phone_number | boolean | нет | true, false | 
@@ -1045,7 +980,7 @@ JSON структура
 
 Номер абонента на который совершается вызов. Формат номера должен соответствовать международному стандарту E.164 (например, `79091234567`). В качестве номера может быть так же указан SIP номер сотрудника.
 
-<div class="bs-callout bs-callout-info">Внутренние номера сотрудников не поддерживаются.</div>
+> Внутренние номера сотрудников не поддерживаются.
 
  |
 | external_id | string | нет | Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой. |
@@ -1055,14 +990,14 @@ JSON структура
 | Оператор с которым будет соединён абонент из параметра `contact` |
 | operator | object | да | Номер оператора с которым будет соединен абонент из параметра `contact`. Оператору доступно управление звонком - опции разговора. Формат номера должен соответствовать международному стандарту E.164 (например, “79091234567”).
 
-<div class="bs-callout bs-callout-info">Не является сотрудником и в отчетах не будет фигурировать как сотрудник</div>
+> Не является сотрудником и в отчетах не будет фигурировать как сотрудник
 
  |
 | contact_message | object | нет | 
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `contact`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`
 
  |
  type | string | да | media, tts | 
@@ -1076,7 +1011,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 | Сообщение для проигрывания абоненту, который задан в параметре `operator` |
@@ -1084,7 +1019,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `operator`.
 
-<div class="bs-callout bs-callout-info">После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`</div>
+> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра `media_file_id`
 
  |
  type | string | да | media, tts | 
@@ -1098,7 +1033,7 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
@@ -1109,57 +1044,51 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"start.simple_call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"first_call"</span></span>: <span class="cm-string"><span class="hljs-string">"operator"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"switch_at_once"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-    <span class="cm-property"><span class="hljs-string">"media_file_id"</span></span>: <span class="cm-string"><span class="hljs-number">2701</span></span>,
-    <span class="cm-property"><span class="hljs-string">"show_virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-literal">false</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74993720692"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-string">"334otr01"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">".1.2.3"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"operator"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-number">25</span></span>,
-      <span class="cm-property"><span class="hljs-string">"phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000001"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "start.simple_call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "first_call": "operator",
+    "switch_at_once": true,
+    "media_file_id": 2701,
+    "show_virtual_phone_number": false,
+    "virtual_phone_number": "74993720692",
+    "external_id": "334otr01",
+    "dtmf_string": ".1.2.3",
+    "direction": "in",
+    "contact": "79260000000",
+    "operator": {
+      "id": 25,
+      "phone_number": "79260000001"
     },
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"tts"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"Привет"</span></span>
+    "contact_message": {
+      "type": "tts",
+      "value": "Привет"
     },
-    <span class="cm-property"><span class="hljs-string">"operator_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"media"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"2561"</span></span>
+    "operator_message": {
+      "type": "media",
+      "value": "2561"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">237859081</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "call_session_id": 237859081
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1173,7 +1102,7 @@ JSON структура
 
 См. также раздел [Список ошибок общих для всех методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#errors-list-all-methods)
 
-</div>
+
 
 <div class="bs-docs-section">
 
@@ -1185,7 +1114,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод доступен для использования только после вызова "[hold.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-hold-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"</div>
+> Метод доступен для использования только после вызова "[hold.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-hold-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"
 
 #### Параметры запроса
 
@@ -1196,7 +1125,7 @@ JSON структура
 
 Номер абонента на который совершаем звонок. Формат номера должен соответствовать международному стандарту E.164
 
-<div class="bs-callout bs-callout-info">Может быть внутренний номер, внешний номер, номер сотрудника, sip-номер</div>
+> Может быть внутренний номер, внешний номер, номер сотрудника, sip-номер
 
  |
 | Сообщение для проигрывания абоненту, который задан в параметре `to` |
@@ -1204,7 +1133,7 @@ JSON структура
 
 Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре `to_message`.
 
-<div class="bs-callout bs-callout-info">Абонент, который стоит на удержании, будет ожидать ответа, пока не будет прослушано сообщение до конца</div>
+> Абонент, который стоит на удержании, будет ожидать ответа, пока не будет прослушано сообщение до конца
 
  |
  type | string | да | media, tts | 
@@ -1218,44 +1147,38 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"make.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">2354891</span></span>,
-    <span class="cm-property"><span class="hljs-string">"to"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "make.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 2354891,
+    "to": "79260000000"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1272,7 +1195,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод доступен для использования только после вызова "[make.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-make-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"</div>
+> Метод доступен для использования только после вызова "[make.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-make-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"
 
 #### Параметры запроса
 
@@ -1282,37 +1205,31 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"transfer.talk"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">2786459</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "transfer.talk",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 2786459
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1327,7 +1244,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод доступен для использования только после вызова "[make.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-make-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"</div>
+> Метод доступен для использования только после вызова "[make.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-make-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"
 
 #### Параметры запроса
 
@@ -1337,37 +1254,31 @@ JSON структура
 
 #### Параметры запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"restore.talk"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">25374860</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "restore.talk",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 25374860
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1400,47 +1311,41 @@ JSON структура
 
 Если поле `type` имеет значение `tts`, то в качестве значения принимается текст для синтезирования его в голосовое сообщение.
 
-<div class="bs-callout bs-callout-info">Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.
 
  |
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"hold.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">23465781</span></span>,
-    <span class="cm-property"><span class="hljs-string">"contact_message"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"type"</span></span>: <span class="cm-string"><span class="hljs-string">"media"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"2034"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "hold.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 23465781,
+    "contact_message": {
+      "type": "media",
+      "value": "2034"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1458,7 +1363,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод доступен для использования только после вызова "[hold.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-hold-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"</div>
+> Метод доступен для использования только после вызова "[hold.call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-hold-call)", см. раздел "[Диаграмма состояний звонка](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#state-diagram-call)"
 
 #### Параметры запроса
 
@@ -1468,37 +1373,31 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"unhold.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">2846590</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "unhold.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 2846590
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1513,7 +1412,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Тег может быть проставлен только на активный вызов. На завершенный вызов тег можно проставить с помощью REST API метода - [Установка тега обращению](https://www.comagic.ru/support/article/137/#ustanovka-tega-obrasheniya)</div>
+> Тег может быть проставлен только на активный вызов. На завершенный вызов тег можно проставить с помощью REST API метода - [Установка тега обращению](https://www.comagic.ru/support/article/137/#ustanovka-tega-obrasheniya)
 
 #### Параметры запроса
 
@@ -1524,38 +1423,32 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"tag.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">2846590</span></span>,
-    <span class="cm-property"><span class="hljs-string">"tag_id"</span></span>: <span class="cm-string"><span class="hljs-number">36</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "tag.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 2846590,
+    "tag_id": 36
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1571,7 +1464,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Завершение плеча `contact` (см. методы [start.employee_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call), [start.scenario_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call), [start.informer_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call), [start.vnumber_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call)) приводит к завершению всей сессии звонка</div>
+> Завершение плеча `contact` (см. методы [start.employee_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call), [start.scenario_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call), [start.informer_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call), [start.vnumber_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call)) приводит к завершению всей сессии звонка
 
 #### Параметры запроса
 
@@ -1582,38 +1475,32 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"disconnect.leg"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">2875654</span></span>,
-    <span class="cm-property"><span class="hljs-string">"leg_id"</span></span>: <span class="cm-string"><span class="hljs-number">9875</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "disconnect.leg",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 2875654,
+    "leg_id": 9875
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1628,7 +1515,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод позволяет подключить к разговору тренера, который задан в личном кабинете или указан в параметре `phone_number`</div>
+> Метод позволяет подключить к разговору тренера, который задан в личном кабинете или указан в параметре `phone_number`
 
 #### Параметры запроса
 
@@ -1637,44 +1524,38 @@ JSON структура
 | call_session_id | number | да | Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове методов [start.vnumber_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call), [start.scenario_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call), [start.employee_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call), с помощью [сервера уведомлений](http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/) или [REST API](https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah). |
 | phone_number | string | нет | Номер тренера, если не используется тренер указанный в личном кабинете.
 
-<div class="bs-callout bs-callout-info">Если номер тренера не задан, то подключается тренер из настроек сотрудника в личном кабинете</div>
+> Если номер тренера не задан, то подключается тренер из настроек сотрудника в личном кабинете
 
  |
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"add.coach"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">27934036</span></span>,
-    <span class="cm-property"><span class="hljs-string">"phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"79260000000"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "add.coach",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 27934036,
+    "phone_number": "79260000000"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1690,7 +1571,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Метод позволяет управлять записью активного разговора. Глобальную запись разговора выключить невозможно.</div>
+> Метод позволяет управлять записью активного разговора. Глобальную запись разговора выключить невозможно.
 
 #### Параметры запроса
 
@@ -1701,38 +1582,32 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"record.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">235496</span></span>,
-    <span class="cm-property"><span class="hljs-string">"action"</span></span>: <span class="cm-string"><span class="hljs-string">"on"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "record.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 235496,
+    "action": "on"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1757,37 +1632,31 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"block.contact"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">27485639</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "block.contact",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 27485639
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1798,7 +1667,7 @@ JSON структура
 
 ### Использование опций разговора
 
-<div class="bs-callout bs-callout-info">Опции разговора настраиваются в личном кабинете "Виртуальная АТС" -> "Опции разговора". Повторный вызов отдельных опций разговора отключает их, примерами таких опций являются `Диктофон`, `Позвонить тренеру` (см. метод [list.talk_options](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-list-talk-options))</div>
+> Опции разговора настраиваются в личном кабинете "Виртуальная АТС" -> "Опции разговора". Повторный вызов отдельных опций разговора отключает их, примерами таких опций являются `Диктофон`, `Позвонить тренеру` (см. метод [list.talk_options](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-list-talk-options))
 
 | Метод | call.talk_option |
 | Версия API | v4.0 |
@@ -1811,44 +1680,38 @@ JSON структура
 | call_session_id | number | да | Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове методов [start.informer_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call), [start.vnumber_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call), [start.scenario_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call), [start.employee_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call), с помощью [сервера уведомлений](http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/) или [REST API](https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah). |
 | button | string | да | Клавиша, вызывающая опцию разговора.
 
-<div class="bs-callout bs-callout-info">Клавиши и действия настраиваются в личном кабинете.</div>
+> Клавиши и действия настраиваются в личном кабинете.
 
  |
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"call.talk_option"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">246578</span></span>,
-    <span class="cm-property"><span class="hljs-string">"button"</span></span>: <span class="cm-string"><span class="hljs-string">"1"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "call.talk_option",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 246578,
+    "button": "1"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Список возвращаемых ошибок
 
@@ -1874,44 +1737,38 @@ JSON структура
 | call_session_id | number | да | Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове методов [start.informer_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call), [start.vnumber_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call), [start.scenario_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call), [start.employee_call](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call), с помощью [сервера уведомлений](http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/) или [REST API](https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah). |
 | dtmf_string | string | да | 0-9, *, # | Задаёт DTMF, который будет отправлен абоненту, который задан в параметре `contact`. В случае исходящего вызова с виртуальной АТС в сторону вызываемого абонента.
 
-<div class="bs-callout bs-callout-info">Отправка DTMF возможна только одиночными символами.</div>
+> Отправка DTMF возможна только одиночными символами.
 
  |
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"send.dtmf"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">27934036</span></span>,
-    <span class="cm-property"><span class="hljs-string">"dtmf_string"</span></span>: <span class="cm-string"><span class="hljs-string">"1"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "send.dtmf",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 27934036,
+    "dtmf_string": "1"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ### Получить список опций разговора
 
@@ -1919,7 +1776,7 @@ JSON структура
 | Версия API | v4.0 |
 | [Вернуться к списку методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#methods-list) |
 
-<div class="bs-callout bs-callout-info">Опции разговора настраиваются в личном кабинете "Виртуальная АТС" -> "Опции разговора".</div>
+> Опции разговора настраиваются в личном кабинете "Виртуальная АТС" -> "Опции разговора".
 
 #### Параметры запроса
 
@@ -1950,44 +1807,38 @@ JSON структура
 
 #### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"list.talk_options"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "list.talk_options",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: [
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": [
       {
-        <span class="cm-property"><span class="hljs-string">"button"</span></span>: <span class="cm-string"><span class="hljs-string">"1"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"mnemonic"</span></span>: <span class="cm-string"><span class="hljs-string">"tag_call"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"name"</span></span>: <span class="cm-string"><span class="hljs-string">"Проставить тег"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"button_value"</span></span>: {
-          <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-number">254</span></span>,
-          <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"Целевой"</span></span>
+        "button": "1",
+        "mnemonic": "tag_call",
+        "name": "Проставить тег",
+        "button_value": {
+          "id": 254,
+          "value": "Целевой"
         }
       }
     ]
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Получить список активных разговоров
 
@@ -2002,7 +1853,7 @@ JSON структура
 | direction | string | нет | in, out | Указывает какие сессии выводить - входящие, исходящие. Если параметр не задан, то выводятся все сессии. |
 | virtual_phone_number | string | нет | Указывает с каким виртуальным номер активные вызовы показывать.
 
-<div class="bs-callout bs-callout-info">Номер должен начинаться с 7</div>
+> Номер должен начинаться с 7
 
  |
 
@@ -2056,73 +1907,67 @@ JSON структура
 
 ##### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"list.calls"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74951045771"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "list.calls",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "direction": "in",
+    "virtual_phone_number": "74951045771"
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ##### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: [
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": [
       {
-        <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">206597836</span></span>,
-        <span class="cm-property"><span class="hljs-string">"direction"</span></span>: <span class="cm-string"><span class="hljs-string">"in"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"start_time"</span></span>: <span class="cm-string"><span class="hljs-string">"2016-10-19T12:26:48.418"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"virtual_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74951045771"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"contact_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74959268686"</span></span>,
-        <span class="cm-property"><span class="hljs-string">"external_id"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>,
-        <span class="cm-property"><span class="hljs-string">"tags"</span></span>: [
+        "call_session_id": 206597836,
+        "direction": "in",
+        "start_time": "2016-10-19T12:26:48.418",
+        "virtual_phone_number": "74951045771",
+        "contact_phone_number": "74959268686",
+        "external_id": null,
+        "tags": [
           {
-            <span class="cm-property"><span class="hljs-string">"tag_id"</span></span>: <span class="cm-string"><span class="hljs-number">456</span></span>,
-            <span class="cm-property"><span class="hljs-string">"tag_name"</span></span>: <span class="cm-string"><span class="hljs-string">"Целевой"</span></span>
+            "tag_id": 456,
+            "tag_name": "Целевой"
           }
         ],
-        <span class="cm-property"><span class="hljs-string">"legs"</span></span>: [
+        "legs": [
           {
-            <span class="cm-property"><span class="hljs-string">"leg_id"</span></span>: <span class="cm-string"><span class="hljs-number">287866245</span></span>,
-            <span class="cm-property"><span class="hljs-string">"calling_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74951045771"</span></span>,
-            <span class="cm-property"><span class="hljs-string">"called_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74959268686...9.2.3.3"</span></span>,
-            <span class="cm-property"><span class="hljs-string">"is_operator"</span></span>: <span class="cm-string"><span class="hljs-literal">false</span></span>,
-            <span class="cm-property"><span class="hljs-string">"employee_id"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>,
-            <span class="cm-property"><span class="hljs-string">"employee_full_name"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>,
-            <span class="cm-property"><span class="hljs-string">"record_call_enabled"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-            <span class="cm-property"><span class="hljs-string">"state"</span></span>: <span class="cm-string"><span class="hljs-string">"Разговор"</span></span>
+            "leg_id": 287866245,
+            "calling_phone_number": "74951045771",
+            "called_phone_number": "74959268686...9.2.3.3",
+            "is_operator": false,
+            "employee_id": null,
+            "employee_full_name": null,
+            "record_call_enabled": true,
+            "state": "Разговор"
           },
           {
-            <span class="cm-property"><span class="hljs-string">"leg_id"</span></span>: <span class="cm-string"><span class="hljs-number">287866221</span></span>,
-            <span class="cm-property"><span class="hljs-string">"calling_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"74959268686"</span></span>,
-            <span class="cm-property"><span class="hljs-string">"called_phone_number"</span></span>: <span class="cm-string"><span class="hljs-string">"79262444393"</span></span>,
-            <span class="cm-property"><span class="hljs-string">"is_operator"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-            <span class="cm-property"><span class="hljs-string">"employee_id"</span></span>: <span class="cm-string"><span class="hljs-number">2345</span></span>,
-            <span class="cm-property"><span class="hljs-string">"employee_full_name"</span></span>: <span class="cm-string"><span class="hljs-string">"Тест"</span></span>,
-            <span class="cm-property"><span class="hljs-string">"record_call_enabled"</span></span>: <span class="cm-string"><span class="hljs-literal">true</span></span>,
-            <span class="cm-property"><span class="hljs-string">"state"</span></span>: <span class="cm-string"><span class="hljs-string">"Разговор"</span></span>
+            "leg_id": 287866221,
+            "calling_phone_number": "74959268686",
+            "called_phone_number": "79262444393",
+            "is_operator": true,
+            "employee_id": 2345,
+            "employee_full_name": "Тест",
+            "record_call_enabled": true,
+            "state": "Разговор"
           }
         ]
       }
     ]
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 #### Завершение сессии звонка
 
@@ -2138,41 +1983,31 @@ JSON структура
 
 ##### Пример запроса
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"method"</span></span>: <span class="cm-string"><span class="hljs-string">"release.call"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"access_token"</span></span>: <span class="cm-string"><span class="hljs-string">"2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"call_session_id"</span></span>: <span class="cm-string"><span class="hljs-number">28575639</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "release.call",
+  "id": "req1",
+  "params": {
+    "access_token": "2fRN4g217ca0b4224a67988aff3e584f91964a692045415f36fa66146f5a3c1ae1f6093d",
+    "call_session_id": 28575639
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ##### Пример ответа
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-string">"req1"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"result"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"success"</span></span>: <span class="cm-string"><span class="hljs-string">"true"</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": "req1",
+  "result": {
+    "data": {
+      "success": "true"
     }
   }
-}`
-                    </pre>
-
-</figure>
-
-</div>
-
-<div class="bs-docs-section">
+}
+```
 
 ## Сообщения об ошибках
 
@@ -2186,20 +2021,20 @@ JSON структура
 
 Название параметра, с которым связана ошибка
 
-<div class="bs-callout bs-callout-info">
+> 
 
 Вложенные параметры отображаем через разделитель "точка": `.`
 
 К примеру: `employee.phone_number`
 
-</div>
+
 
  |
  value | string | нет | 
 
 Содержит то, что передал пользователь без изменений
 
-<div class="bs-callout bs-callout-info">В некоторых случаях может отсутствовать. К примеру, обязательный параметр вообще не был заполнен.</div>
+> В некоторых случаях может отсутствовать. К примеру, обязательный параметр вообще не был заполнен.
 
  |
  params | object | нет | Карта подстановок параметров для шаблона с текстом об ошибке. Т.е. содержит динамически изменяемые значения, к примеру, лимиты, длина TTS сообщения. Значения указанные в этом параметре могут быть использованы в сообщениях об ошибках в интерфейсе над Call API (рабочее место оператора). |
@@ -2207,28 +2042,25 @@ JSON структура
 
 ### Пример ошибки
 
-<figure class="highlight">
-
-<pre>                       `{
-  <span class="cm-property"><span class="hljs-string">"jsonrpc"</span></span>: <span class="cm-string"><span class="hljs-string">"2.0"</span></span>,
-  <span class="cm-property"><span class="hljs-string">"id"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>,
-  <span class="cm-property"><span class="hljs-string">"error"</span></span>: {
-    <span class="cm-property"><span class="hljs-string">"code"</span></span>: <span class="cm-string"><span class="hljs-number">-32602</span></span>,
-    <span class="cm-property"><span class="hljs-string">"message"</span></span>: <span class="cm-string"><span class="hljs-string">"Data supplied is of wrong type"</span></span>,
-    <span class="cm-property"><span class="hljs-string">"data"</span></span>: {
-      <span class="cm-property"><span class="hljs-string">"mnemonic"</span></span>: <span class="cm-string"><span class="hljs-string">"data_type_error"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"field"</span></span>: <span class="cm-string"><span class="hljs-string">"contact"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"value"</span></span>: <span class="cm-string"><span class="hljs-string">"номер"</span></span>,
-      <span class="cm-property"><span class="hljs-string">"params"</span></span>: {
-        <span class="cm-property"><span class="hljs-string">"object"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>
+```json
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32602,
+    "message": "Data supplied is of wrong type",
+    "data": {
+      "mnemonic": "data_type_error",
+      "field": "contact",
+      "value": "номер",
+      "params": {
+        "object": null
       },
-      <span class="cm-property"><span class="hljs-string">"extended_helper"</span></span>: <span class="cm-string"><span class="hljs-literal">null</span></span>
+      "extended_helper": null
     }
   }
-}`
-                    </pre>
-
-</figure>
+}
+```
 
 ### Группы кодов ошибок
 
@@ -2239,7 +2071,7 @@ JSON структура
 | -32602 | Ошибки связанные с валидацией параметров в вызываемом методе |
 | -32603 | Внутренние ошибки JSON RPC сервера
 
-<div class="bs-callout bs-callout-info">В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.</div>
+> В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.
 
  |
 | -32001 | Ошибки аутентификации и ошибки с ключами |
@@ -2250,7 +2082,7 @@ JSON структура
 | -32008 | Ошибки связанные с компонентами |
 | -32009 | Ошибки связанные с аккаунтом
 
-<div class="bs-callout bs-callout-info">В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.</div>
+> В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.
 
  |
 | -32029 | Ошибки связанные с лимитами |
@@ -2269,13 +2101,13 @@ JSON структура
 | Login or password is wrong | -32001 | `auth_error` | Некорректный логин или пароль |
 | Your account has been disabled, contact the support service | -32009 | `account_inactive` | Аккаунт заблокирован
 
-<div class="bs-callout bs-callout-info">В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.</div>
+> В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.
 
  |
 | Call session not found | -32602 | `call_session_not_found` | Если передали ID сессии, который неизвестен |
 | Internal error, contact the support service | -32603 | `internal_error` | 
 
-<div class="bs-callout bs-callout-info">В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.</div>
+> В случае возникновения ошибки, необходимо обратиться в службу технической поддержки, передав запрос, который вызвал ошибку и время запроса.
 
  |
 | Data supplied is of wrong type | -32602 | `data_type_error` | К примеру, если ожидаем `string` а передали `int` |
@@ -2288,6 +2120,5 @@ JSON структура
 | Invalid parameter value | -32602 | `invalid_parameter_value` | Возвращается во всех случаях, если было передано некорректное значение параметра или переданное значение не соответствует требуемому формату ввода |
 | Unexpected method parameter(s) | -32602 | `unexpected_parameters` | Если в `params` были переданы параметры, которые не предусмотрены JSON структурой метода |
 
-</div>
 
-</div>
+
