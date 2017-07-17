@@ -1102,8 +1102,6 @@ JSON структура
 
 См. также раздел [Список ошибок общих для всех методов](https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#errors-list-all-methods)
 
-
-
 <div class="bs-docs-section">
 
 ## Группа методов управления вызовами
@@ -2027,8 +2025,6 @@ JSON структура
 
 К примеру: `employee.phone_number`
 
-
-
  |
  value | string | нет | 
 
@@ -2119,6 +2115,3 @@ JSON структура
 | The required parameter has been missed | -32602 | `required_parameter_missed` | Обязательный параметр не передали |
 | Invalid parameter value | -32602 | `invalid_parameter_value` | Возвращается во всех случаях, если было передано некорректное значение параметра или переданное значение не соответствует требуемому формату ввода |
 | Unexpected method parameter(s) | -32602 | `unexpected_parameters` | Если в `params` были переданы параметры, которые не предусмотрены JSON структурой метода |
-
-
-
