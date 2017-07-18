@@ -522,7 +522,7 @@ JSON структура
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр имеет значение <code>true</code>, то сотрудник при дозвоне до абонента будет слышать то, что происходит в абонентской линии.</p>
                 <p>К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра <code>early_switching</code> = <code>true</code>, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр <code>early_switching</code> = <code>false</code>, то оператор будет слушать музыку, которая задана в параметре "media_file_id" </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>employee</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call-errors">коды ошибок</a>). </div>
+                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>employee</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
             </td>
         </tr>
         <tr>
@@ -534,8 +534,8 @@ JSON структура
                 <p>Значение по умолчанию - системная мелодия "Музыка переадресации" (<code>dialing_music</code>).</p>
                 <p>Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так
                     и пользовательским. Получить список системных или пользовательских файлов можно с помощью 
-                    REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, 
-                    <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>.
+                    REST API - Получение списка пользовательских файлов, 
+                    Получение списка системных файлов.
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>employee_message</code></div>
                 <p></p>
@@ -552,7 +552,7 @@ JSON структура
                     на номер, указанный в параметре <code>contact</code>. Используется в качестве номера звонящего при звонке на
                     номер, указанный в параметре <code>employee</code>, если параметр <code>show_virtual_phone_number</code> имеет значение
                     <code>true</code>.
-                    Виртуальные номера можно получить с помощью REST API метода - <a href="https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov" target="_blank">Получение списка виртуальных номеров</a>
+                    Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
@@ -622,7 +622,7 @@ JSON структура
             <td class="text-center">да</td>
             <td class="text-center"></td>
             <td>
-                Уникальный идентификатор сотрудника. Данный идентификатор можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#employee" target="_blank">Получение информации о сотруднике</a>
+                Уникальный идентификатор сотрудника. Данный идентификатор можно получить с помощью REST API - Получение информации о сотруднике
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если не указан параметр <code>phone_number</code>, то будет совершен последовательный обзвон всех активных номеров сотрудника.</div>
             </td>
         </tr>
@@ -671,7 +671,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -711,7 +711,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -837,7 +837,7 @@ JSON структура
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
                     на номер, указанный в параметре <code>contact</code>. Используется в качестве номера звонящего при звонке на
                     сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги".
-                    Виртуальные номера можно получить с помощью REST API метода - <a href="https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov" target="_blank">Получение списка виртуальных номеров</a>
+                    Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
@@ -923,7 +923,7 @@ JSON структура
             <td class="text-center">да</td>
             <td class="text-center"></td>
             <td>Уникальный идентификатор сценария, который может быть получен с 
-                помощью REST API - <a href="https://www.comagic.ru/support/article/137/#poluchenie-spiska-scenariev" target="_blank">Получение списка сценариев</a>.
+                помощью REST API - Получение списка сценариев.
             </td>
         </tr>
         <tr>
@@ -967,7 +967,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -1083,7 +1083,7 @@ JSON структура
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
                     на номер, указанный в параметре <code>contact</code>. Используется в качестве номера звонящего при звонке на
                     сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги". 
-                    Виртуальные номера можно получить с помощью REST API метода - <a href="https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov" target="_blank">Получение списка виртуальных номеров</a>
+                    Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
@@ -1204,7 +1204,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -1321,7 +1321,7 @@ JSON структура
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
                     на номер, указанный в параметре <code>contact</code>. Виртуальные номера можно получить с помощью REST 
-                    API метода - <a href="https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov" target="_blank">Получение списка виртуальных номеров</a>
+                    API метода - Получение списка виртуальных номеров
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
@@ -1404,7 +1404,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -1542,7 +1542,7 @@ JSON структура
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр имеет значение <code>true</code>, то сотрудник при дозвоне до абонента будет слышать то, что происходит в абонентской линии.</p>
                 <p>К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра <code>early_switching</code> = <code>true</code>, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр <code>early_switching</code> = <code>false</code>, то оператор будет слушать музыку, которая задана в параметре "media_file_id" </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>operator</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-simple-call-errors">коды ошибок</a>). </div>
+                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>operator</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
             </td>
         </tr>
         <tr>
@@ -1554,8 +1554,8 @@ JSON структура
                 <p>Значение по умолчанию - системная мелодия "Музыка переадресации" (<code>dialing_music</code>).</p>
                 <p>Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так
                     и пользовательским. Получить список системных или пользовательских файлов можно с помощью 
-                    REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, 
-                    <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>.
+                    REST API - Получение списка пользовательских файлов, 
+                    Получение списка системных файлов.
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>operator_message</code></div>
                 <p></p>
@@ -1572,7 +1572,7 @@ JSON структура
                     на номер, указанный в параметре <code>contact</code>. Используется в качестве номера звонящего при звонке на
                     номер, указанный в параметре <code>operator</code>, если параметр <code>show_virtual_phone_number</code> имеет значение
                     <code>true</code>.
-                    Виртуальные номера можно получить с помощью REST API метода - <a href="https://www.comagic.ru/support/article/137/#poluchenie_spiska_virtualnih_nomerov" target="_blank">Получение списка виртуальных номеров</a>
+                    Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
                 <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
@@ -1667,7 +1667,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -1707,7 +1707,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -1831,7 +1831,7 @@ JSON структура
             <td class="text-center">да</td>
             <td class="text-center"></td>
             <td>Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
-                методов <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call">start.informer_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call">start.vnumber_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call">start.scenario_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call">start.employee_call</a>, с помощью <a href="http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/" target="_blank">сервера уведомлений</a> или <a href="https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah" target="_blank">REST API</a>.
+                методов start.informer_call, start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
             </td>
         </tr>
         <tr>
@@ -1876,7 +1876,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -2094,7 +2094,7 @@ JSON структура
             <td class="text-center">да</td>
             <td class="text-center"></td>
             <td>Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
-                методов <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call">start.vnumber_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call">start.scenario_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call">start.employee_call</a>, с помощью <a href="http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/" target="_blank">сервера уведомлений</a> или <a href="https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah" target="_blank">REST API</a>.
+                методов start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
             </td>
         </tr>
         <tr>
@@ -2108,10 +2108,10 @@ JSON структура
             <td>
                 Определяет параметры сообщения, которое необходимо проиграть вызывающему абоненту. 
                 Вызывающий абонент - это номер, указанный в параметре <code>contact</code> в методах 
-                <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call">start.informer_call</a>, 
-                <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call">start.vnumber_call</a>, 
-                <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call">start.scenario_call</a>, 
-                <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call">start.employee_call</a> или абонент позвонивший на виртуальную АТС.
+                start.informer_call, 
+                start.vnumber_call, 
+                start.scenario_call, 
+                start.employee_call или абонент позвонивший на виртуальную АТС.
             </td>
         </tr>
         <tr>
@@ -2133,7 +2133,7 @@ JSON структура
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
-                    файла для проигрывания можно получить с помощью REST API - <a href="https://www.comagic.ru/support/article/137/#media_files" target="_blank">Получение списка пользовательских файлов</a>, <a href="https://www.comagic.ru/support/article/137/#system_media_files" target="_blank">Получение списка системных файлов</a>
+                    файла для проигрывания можно получить с помощью REST API - Получение списка пользовательских файлов, Получение списка системных файлов
                 </p>
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
@@ -2879,7 +2879,7 @@ JSON структура
             <td class="text-center"></td>
             <td>
                 Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
-                методов <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-informer-call">start.informer_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-vnumber-call">start.vnumber_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-scenario-call">start.scenario_call</a>, <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#api-methods-start-employee-call">start.employee_call</a>, с помощью <a href="http://help.comagic.ru/topics/86-nastrojka-uvedomlenij/" target="_blank">сервера уведомлений</a> или <a href="https://www.comagic.ru/support/article/137/#poluchenie-informacii-o-zvonkah" target="_blank">REST API</a>.
+                методов start.informer_call, start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
             </td>
         </tr>
         <tr>
@@ -3192,7 +3192,7 @@ JSON структура
             <td>number</td>
             <td class="text-center">да</td>
             <td></td>
-            <td>Код ошибки (см. раздел <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#errors-code-groups">Группы кодов ошибок</a>)</td>
+            <td>Код ошибки (см. раздел Группы кодов ошибок)</td>
         </tr>
         <tr>
             <td></td>
@@ -3200,7 +3200,7 @@ JSON структура
             <td>string</td>
             <td class="text-center">да</td>
             <td></td>
-            <td>Сообщение об ошибке (см. раздел <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#errors-list-all-methods">Список ошибок общих для всех методов</a>)</td>
+            <td>Сообщение об ошибке (см. раздел Список ошибок общих для всех методов)</td>
         </tr>
         <tr>
             <td></td>
@@ -3217,7 +3217,7 @@ JSON структура
             <td>string</td>
             <td class="text-center">да</td>
             <td></td>
-            <td>Уникальный текстовый код ошибки (см. раздел <a href="https://www.comagic.ru/upload/iblock/ec0/index-doc-call-api.html#errors-list-all-methods">Список ошибок общих для всех методов</a>, а так же существуют ошибки специфичные для отдельных методов)</td>
+            <td>Уникальный текстовый код ошибки (см. раздел Список ошибок общих для всех методов, а так же существуют ошибки специфичные для отдельных методов)</td>
         </tr>
         <tr>
             <td></td>
