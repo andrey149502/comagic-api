@@ -605,7 +605,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сотрудник с которым будет соединён абонент из параметра <code>contact</code></td>
+            <td colspan="6" align="center">Сотрудник с которым будет соединён абонент из параметра <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">employee</td>
@@ -639,7 +639,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
@@ -679,7 +679,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>employee</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>employee</code></td>
         </tr>
         <tr>
             <td colspan="2">employee_message</td>
@@ -935,7 +935,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
@@ -1172,7 +1172,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
@@ -1373,7 +1373,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
@@ -1625,7 +1625,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Оператор с которым будет соединён абонент из параметра <code>contact</code></td>
+            <td colspan="6" align="center">Оператор с которым будет соединён абонент из параметра <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">operator</td>
@@ -1675,7 +1675,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>operator</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>operator</code></td>
         </tr>
         <tr>
             <td colspan="2">operator_message</td>
@@ -1844,7 +1844,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>to</code></td>
+            <td colspan="6" align="center">Сообщение для проигрывания абоненту, который задан в параметре <code>to</code></td>
         </tr>
         <tr>
             <td colspan="2">to_message</td>
@@ -2097,7 +2097,7 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td colspan="6">Проигрывание сообщения вызывающему абоненту</td>
+            <td colspan="6" align="center">Проигрывание сообщения вызывающему абоненту</td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
@@ -2774,7 +2774,7 @@ JSON структура
             <td>Название опции разговора</td>
         </tr>
         <tr>
-            <td colspan="6">Значение опции</td>
+            <td colspan="6" align="center">Значение опции</td>
         </tr>
         <tr>
             <td colspan="2">button_value</td>
@@ -2917,7 +2917,7 @@ JSON структура
             <td>Уникальный идентификатор запроса во внешней системе клиента</td>
         </tr>
         <tr>
-            <td colspan="6">Список проставленных тегов</td>
+            <td colspan="6" align="center">Список проставленных тегов</td>
         </tr>
         <tr>
             <td colspan="2">tags</td>
@@ -2943,7 +2943,7 @@ JSON структура
             <td>Имя тега</td>
         </tr>
         <tr>
-            <td colspan="6">Участники сессии звонка</td>
+            <td colspan="6" align="center">Участники сессии звонка</td>
         </tr>
         <tr>
             <td colspan="2">legs</td>
