@@ -23,7 +23,7 @@ API реализован на основе спецификации JSON-RPC 2.0
         <th>Описание</th>
     </tr>
     <tr>
-    <td class="color-bg" colspan="4" align="center">Аутентификация</td>
+    <td colspan="4" align="center">Аутентификация</td>
     </tr>
     <tr>
         <td><code>login.user</code></td>
@@ -34,7 +34,7 @@ API реализован на основе спецификации JSON-RPC 2.0
         <td>Аутентификация: Выход</td>
     </tr>
     <tr>
-        <td class="color-bg" colspan="4" align="center">Группа методов создания звонков</td>
+        <td colspan="4" align="center">Группа методов создания звонков</td>
     </tr>
     <tr>
         <td><code>start.employee_call</code></td>
@@ -58,7 +58,7 @@ API реализован на основе спецификации JSON-RPC 2.0
         <td>Звонок на любые номера кроме собственных виртуальных</td>
     </tr>                   
     <tr>
-        <td class="color-bg" colspan="4" align="center">Группа методов управления звонками</td>
+        <td colspan="4" align="center">Группа методов управления звонками</td>
     </tr>
     <tr>
         <td><code>make.call</code></td>
@@ -92,7 +92,7 @@ API реализован на основе спецификации JSON-RPC 2.0
         <td><code>record.call</code></td>
         <td>
             Управление записью разговора<br>
-            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Отключить запись разговора, настроенную через личный кабинет невозможно
+            <i aria-hidden="true"></i> Отключить запись разговора, настроенную через личный кабинет невозможно
         </td>
     </tr>
     <tr>
@@ -463,15 +463,15 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">first_call</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">contact, employee</td>
+            <td>да</td>
+            <td>contact, employee</td>
             <td>
                 <p>Определяет номер, на который нужно дозвониться в первую очередь:</p>
                 <ul>
@@ -483,8 +483,8 @@ JSON структура
         <tr>
             <td colspan="2">switch_at_once</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр <code>first_call</code> имеет значение <code>employee</code>, заданы параметры <code>employee_message</code>
@@ -509,26 +509,26 @@ JSON структура
                     <li>Если у кого-то проигрывание сообщения закончилось раньше, то он слушает сообщение, заданное в параметре <code>media_file_id</code>.</li>
                 </ul>
                 <p></p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
+                <div><i></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">early_switching</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр имеет значение <code>true</code>, то сотрудник при дозвоне до абонента будет слышать то, что происходит в абонентской линии.</p>
                 <p>К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра <code>early_switching</code> = <code>true</code>, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр <code>early_switching</code> = <code>false</code>, то оператор будет слушать музыку, которая задана в параметре "media_file_id" </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>employee</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
+                <div><i></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>employee</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
             </td>
         </tr>
         <tr>
             <td colspan="2">media_file_id</td>
             <td>number</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Значение по умолчанию - системная мелодия "Музыка переадресации" (<code>dialing_music</code>).</p>
                 <p>Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так
@@ -536,15 +536,15 @@ JSON структура
                     REST API - Получение списка пользовательских файлов, 
                     Получение списка системных файлов.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>employee_message</code></div>
+                <div><i></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>employee_message</code></div>
                 <p></p>
             </td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
@@ -553,14 +553,14 @@ JSON структура
                     <code>true</code>.
                     Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
+                <div><i></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">show_virtual_phone_number</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>true</code>.</p>
                 <p>Показывать ли виртуальный номер, заданный параметром <code>virtual_phone_number</code> в качестве номера звонящего абонента для сотрудника заданного в параметре <code>employee</code>.</p>
@@ -569,27 +569,27 @@ JSON структура
         <tr>
             <td colspan="2">contact</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершается вызов. Формат номера должен соответствовать
                     международному стандарту E.164 (например, <code>79091234567</code>). В качестве номера может быть так же указан SIP номер сотрудника.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Внутренние номера сотрудников не поддерживаются.</div>
+                <div><i></i>Внутренние номера сотрудников не поддерживаются.</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой.</td>
         </tr>
         <tr>
             <td colspan="2">dtmf_string</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">0-9, *, #</td>
+            <td>нет</td>
+            <td>0-9, *, #</td>
             <td>Задаёт DTMF, который будет отправлен абоненту, заданному в параметре <code>contact</code>. С
                 помощью символа <code>.</code> = '1 секунда' можно задать таймаут по истечению которого символ DTMF будет отправлен. Пример: <code>.12.1..4</code>, т.е через 1 секунду
                 будет отправлена цифра 12, далее через 1 секунду будет отправлена цифра 1 и через 2 секунды цифра 4.
@@ -598,39 +598,39 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">in, out</td>
+            <td>нет</td>
+            <td>in, out</td>
             <td>Значение по умолчанию <code>out</code>. <br>
                 Определяет направление звонка <code>in</code> - Входящий звонок, <code>out</code> - Исходящий звонок.
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сотрудник с которым будет соединён абонент из параметра <code>contact</code></td>
+            <td colspan="6">Сотрудник с которым будет соединён абонент из параметра <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">employee</td>
             <td>object</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Сотрудник с которым будет соединён абонент, указанный в параметре <code>contact</code>.</td>
         </tr>
         <tr>
             <td width="15"></td>
             <td>id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 Уникальный идентификатор сотрудника. Данный идентификатор можно получить с помощью REST API - Получение информации о сотруднике
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если не указан параметр <code>phone_number</code>, то будет совершен последовательный обзвон всех активных номеров сотрудника.</div>
+                <div><i></i>Если не указан параметр <code>phone_number</code>, то будет совершен последовательный обзвон всех активных номеров сотрудника.</div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>phone_number</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Задаёт номер сотрудника с которым будет соединен абонент указанный в параметре <code>contact</code>.
                     В качестве номера может быть указан SIP-номер, внутренний номер, номер в формате E.164. Номер должен
@@ -639,24 +639,24 @@ JSON структура
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>contact</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -665,8 +665,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -675,28 +675,28 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>employee</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>employee</code></td>
         </tr>
         <tr>
             <td colspan="2">employee_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>employee</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -705,8 +705,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -715,7 +715,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -822,15 +822,15 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
@@ -838,21 +838,21 @@ JSON структура
                     сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги".
                     Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
+                <div><i></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой.</td>
         </tr>
         <tr>
             <td colspan="2">dtmf_string</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">0-9, *, #</td>
+            <td>нет</td>
+            <td>0-9, *, #</td>
             <td>Задаёт DTMF, который будет отправлен абоненту, заданному в параметре <code>contact</code>. С
                 помощью символа <code>.</code> = '1 секунда' можно задать таймаут по истечению которого символ DTMF будет отправлен. Пример: <code>.12.1..4</code>, т.е через 1 секунду
                 будет отправлена цифра 12, далее через 1 секунду будет отправлена цифра 1 и через 2 секунды цифра 4.
@@ -861,21 +861,21 @@ JSON структура
         <tr>
             <td colspan="2">contact</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершается вызов. Формат номера должен соответствовать
                     международному стандарту E.164 (например, <code>79091234567</code>). В качестве номера может быть так же указан SIP номер сотрудника.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если не задан параметр <code>contact_message</code>, то абоненту будет проигрываться системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Внутренние номера сотрудников не поддерживаются.</div>
+                <div><i></i>Если не задан параметр <code>contact_message</code>, то абоненту будет проигрываться системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
+                <div><i></i>Внутренние номера сотрудников не поддерживаются.</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">first_call</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">contact, employee</td>
+            <td>да</td>
+            <td>contact, employee</td>
             <td>
                 <p>Определяет номер, на который нужно дозвониться в первую очередь:</p>
                 <ul>
@@ -887,8 +887,8 @@ JSON структура
         <tr>
             <td colspan="2">switch_at_once</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр <code>first_call</code> имеет значение <code>employee</code>, задано сообщение сотруднику в сценарии
@@ -913,14 +913,14 @@ JSON структура
                     <li>Если у кого-то проигрывание сообщения закончилось раньше, то он слушает системную мелодию - <code>Музыка переадресации (dialing_music)</code>.</li>
                 </ul>
                 <p></p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
+                <div><i></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">scenario_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор сценария, который может быть получен с 
                 помощью REST API - Получение списка сценариев.
             </td>
@@ -928,31 +928,31 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">in, out</td>
+            <td>нет</td>
+            <td>in, out</td>
             <td>Значение по умолчанию <code>out</code>. <br>
                 Определяет направление звонка <code>in</code> - Входящий звонок, <code>out</code> - Исходящий звонок.
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>contact</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -961,8 +961,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -971,7 +971,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -1068,15 +1068,15 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
@@ -1084,21 +1084,21 @@ JSON структура
                     сотрудника, если в сценарии в операции "Переадресация" установлена настройка "Показывать при звонке" в значение "Номер услуги". 
                     Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
+                <div><i></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой.</td>
         </tr>
         <tr>
             <td colspan="2">dtmf_string</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">0-9, *, #</td>
+            <td>нет</td>
+            <td>0-9, *, #</td>
             <td>Задаёт DTMF, который будет отправлен абоненту, заданному в параметре <code>contact</code>. С
                 помощью символа <code>.</code> = '1 секунда' можно задать таймаут по истечению которого символ DTMF будет отправлен. Пример: <code>.12.1..4</code>, т.е через 1 секунду
                 будет отправлена цифра 12, далее через 1 секунду будет отправлена цифра 1 и через 2 секунды цифра 4.
@@ -1107,8 +1107,8 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">in, out</td>
+            <td>нет</td>
+            <td>in, out</td>
             <td>Значение по умолчанию <code>out</code>. <br>
                 Определяет направление звонка <code>in</code> - Входящий звонок, <code>out</code> - Исходящий звонок.
             </td>
@@ -1116,21 +1116,21 @@ JSON структура
         <tr>
             <td colspan="2">contact</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершается вызов. Формат номера должен соответствовать
                     международному стандарту E.164 (например, <code>79091234567</code>). В качестве номера может быть так же указан SIP номер сотрудника.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если не задан параметр <code>contact_message</code>, то абоненту будет проигрываться системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Внутренние номера сотрудников не поддерживаются.</div>
+                <div><i></i>Если не задан параметр <code>contact_message</code>, то абоненту будет проигрываться системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
+                <div><i></i>Внутренние номера сотрудников не поддерживаются.</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">first_call</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">contact, employee</td>
+            <td>да</td>
+            <td>contact, employee</td>
             <td>
                 <p>Определяет номер, на который нужно дозвониться в первую очередь:</p>
                 <ul>
@@ -1142,8 +1142,8 @@ JSON структура
         <tr>
             <td colspan="2">switch_at_once</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр <code>first_call</code> имеет значение <code>employee</code>, задано сообщение сотруднику в сценарии
@@ -1168,28 +1168,28 @@ JSON структура
                     <li>Если у кого-то проигрывание сообщения закончилось раньше, то он слушает системную мелодию - <code>Музыка переадресации (dialing_music)</code>.</li>
                 </ul>
                 <p></p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
+                <div><i></i>Если в параметре <code>contact_message type</code> имеет значение <code>tts</code>, то параметр <code>switch_at_once=true</code> не работает</div>
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>contact</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу системная мелодия - <code>Музыка переадресации (dialing_music)</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -1198,8 +1198,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -1208,7 +1208,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -1307,36 +1307,36 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
                     на номер, указанный в параметре <code>contact</code>. Виртуальные номера можно получить с помощью REST 
                     API метода - Получение списка виртуальных номеров
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
+                <div><i></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой.</td>
         </tr>
         <tr>
             <td colspan="2">dtmf_string</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">0-9, *, #</td>
+            <td>нет</td>
+            <td>0-9, *, #</td>
             <td>Задаёт DTMF, который будет отправлен абоненту, заданному в параметре <code>contact</code>. С
                 помощью символа <code>.</code> = '1 секунда' можно задать таймаут по истечению которого символ DTMF будет отправлен. Пример: <code>.12.1..4</code>, т.е через 1 секунду
                 будет отправлена цифра 12, далее через 1 секунду будет отправлена цифра 1 и через 2 секунды цифра 4.
@@ -1345,8 +1345,8 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">in, out</td>
+            <td>нет</td>
+            <td>in, out</td>
             <td>Значение по умолчанию <code>out</code>. <br>
                 Определяет направление звонка <code>in</code> - Входящий звонок, <code>out</code> - Исходящий звонок.
             </td>
@@ -1354,32 +1354,32 @@ JSON структура
         <tr>
             <td colspan="2">contact</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершается вызов. Формат номера должен соответствовать
                     международному стандарту E.164 (например, <code>79091234567</code>). В качестве номера может быть так же указан SIP номер сотрудника.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Внутренние номера сотрудников не поддерживаются.</div>
+                <div><i></i>Внутренние номера сотрудников не поддерживаются.</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">dialing_timeout</td>
             <td>number</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">до 120 секунд</td>
+            <td>нет</td>
+            <td>до 120 секунд</td>
             <td>Значение по умолчанию <code>30</code>. Время ожидания ответа от номера, заданного в параметре <code>contact</code>, 
                 если ответ не был получен, то вызов завершается. Время задаётся в секундах.
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>contact</code>.</p>
             </td>
@@ -1388,8 +1388,8 @@ JSON структура
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -1398,8 +1398,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -1408,7 +1408,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -1502,15 +1502,15 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">first_call</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">contact, operator</td>
+            <td>да</td>
+            <td>contact, operator</td>
             <td>
                 <p>Определяет номер, на который нужно дозвониться в первую очередь:</p>
                 <ul>
@@ -1522,8 +1522,8 @@ JSON структура
         <tr>
             <td colspan="2">switch_at_once</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 Если параметр <code>first_call</code> имеет значение <code>operator</code> и задан параметр <code>operator_message</code>, то звонок совершается оператору, оператор после поднятия трубки слушает сообщение до конца, потом совершается звонок на <code>contact</code> и если параметр <code>switch_at_once</code> имеет значение <code>true</code> и задана параметр <code>contact_message</code>, то для плеча <code>contact</code> проигрывание
@@ -1535,20 +1535,20 @@ JSON структура
         <tr>
             <td colspan="2">early_switching</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>false</code>.</p>
                 <p>Если параметр имеет значение <code>true</code>, то сотрудник при дозвоне до абонента будет слышать то, что происходит в абонентской линии.</p>
                 <p>К примеру, оператор ждет дозвона до абонента, а абонент недоступен и у него сработала голосовая почта, то при активации параметра <code>early_switching</code> = <code>true</code>, оператор сможет услышать сообщение о голосовой почте абонента. Если параметр <code>early_switching</code> = <code>false</code>, то оператор будет слушать музыку, которая задана в параметре "media_file_id" </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>operator</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
+                <div><i></i>Параметр может иметь значение <code>true</code> если только параметр <code>first_call</code> имеет значение <code>operator</code> и параметр <code>switch_at_once</code> имеет значение значение <code>true</code>. В противном случае будет ошибка "-32602 invalid_parameters_combination The combination of parameters is not permitted" (см. раздел коды ошибок). </div>
             </td>
         </tr>
         <tr>
             <td colspan="2">media_file_id</td>
             <td>number</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Значение по умолчанию - системная мелодия "Музыка переадресации" (<code>dialing_music</code>).</p>
                 <p>Задаёт идентификатор звукового файла для музыки переадресации. Файл может быть как системным, так
@@ -1556,15 +1556,15 @@ JSON структура
                     REST API - Получение списка пользовательских файлов, 
                     Получение списка системных файлов.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>operator_message</code></div>
+                <div><i></i>Проигрывается всегда тому плечу, для которого не задан один из параметров <code>contact_message</code> или <code>operator_message</code></div>
                 <p></p>
             </td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Виртуальный номер, арендуемый клиентом. Формат номера должен соответствовать международному
                     стандарту E.164 (например, <code>74993720692</code>). Всегда используется в качестве номера звонящего при звонке
@@ -1573,14 +1573,14 @@ JSON структура
                     <code>true</code>.
                     Виртуальные номера можно получить с помощью REST API метода - Получение списка виртуальных номеров
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
+                <div><i></i> В качестве виртуального номера запрещено использовать 800-е номера</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">show_virtual_phone_number</td>
             <td>boolean</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">true, false</td>
+            <td>нет</td>
+            <td>true, false</td>
             <td>
                 <p>Значение по умолчанию <code>true</code>.</p>
                 <p>Показывать ли виртуальный номер, заданный параметром <code>virtual_phone_number</code> в качестве номера звонящего абонента для оператора заданного в параметре <code>operator</code>.</p>
@@ -1589,27 +1589,27 @@ JSON структура
         <tr>
             <td colspan="2">contact</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершается вызов. Формат номера должен соответствовать
                     международному стандарту E.164 (например, <code>79091234567</code>). В качестве номера может быть так же указан SIP номер сотрудника.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Внутренние номера сотрудников не поддерживаются.</div>
+                <div><i></i>Внутренние номера сотрудников не поддерживаются.</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>Уникальный идентификатор, который может быть использован для связи события звонка с внешней системой.</td>
         </tr>
         <tr>
             <td colspan="2">dtmf_string</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">0-9, *, #</td>
+            <td>нет</td>
+            <td>0-9, *, #</td>
             <td>Задаёт DTMF, который будет отправлен абоненту, заданному в параметре <code>contact</code>. С
                 помощью символа <code>.</code> = '1 секунда' можно задать таймаут по истечению которого символ DTMF будет отправлен. Пример: <code>.12.1..4</code>, т.е через 1 секунду
                 будет отправлена цифра 12, далее через 1 секунду будет отправлена цифра 1 и через 2 секунды цифра 4.
@@ -1618,41 +1618,41 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">нет</td>
-            <td class="text-center">in, out</td>
+            <td>нет</td>
+            <td>in, out</td>
             <td>Значение по умолчанию <code>out</code>. <br>
                 Определяет направление звонка <code>in</code> - Входящий звонок, <code>out</code> - Исходящий звонок.
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Оператор с которым будет соединён абонент из параметра <code>contact</code></td>
+            <td colspan="6">Оператор с которым будет соединён абонент из параметра <code>contact</code></td>
         </tr>
         <tr>
             <td colspan="2">operator</td>
             <td>object</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 Номер оператора с которым будет соединен абонент из параметра <code>contact</code>. Оператору доступно управление звонком - опции разговора. Формат номера должен соответствовать международному стандарту E.164 (например, “79091234567”).
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i>Не является сотрудником и в отчетах не будет фигурировать как сотрудник</div>
+                <div><i></i>Не является сотрудником и в отчетах не будет фигурировать как сотрудник</div>
             </td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>contact</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -1661,8 +1661,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -1671,28 +1671,28 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>operator</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>operator</code></td>
         </tr>
         <tr>
             <td colspan="2">operator_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>operator</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
+                <div><i></i> После окончания проигрывания сообщения, будет проигрываться покругу сообщение из параметра <code>media_file_id</code></div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -1701,8 +1701,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -1711,7 +1711,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -1820,15 +1820,15 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">call_session_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
                 методов start.informer_call, start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
             </td>
@@ -1836,32 +1836,32 @@ JSON структура
         <tr>
             <td colspan="2">to</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Номер абонента на который совершаем звонок. Формат номера должен соответствовать международному стандарту E.164</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Может быть внутренний номер, внешний номер, номер сотрудника, sip-номер</div>
+                <div><i></i> Может быть внутренний номер, внешний номер, номер сотрудника, sip-номер</div>
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>to</code></td>
+            <td colspan="6">Сообщение для проигрывания абоненту, который задан в параметре <code>to</code></td>
         </tr>
         <tr>
             <td colspan="2">to_message</td>
             <td>object</td>
-            <td class="text-center">нет</td>
-            <td class="text-center"></td>
+            <td>нет</td>
+            <td></td>
             <td>
                 <p>Определяет параметры сообщения, которое необходимо проиграть абоненту заданному в параметре <code>to_message</code>.</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Абонент, который стоит на удержании, будет ожидать ответа, пока не будет прослушано сообщение до конца</div>
+                <div><i></i> Абонент, который стоит на удержании, будет ожидать ответа, пока не будет прослушано сообщение до конца</div>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -1870,8 +1870,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -1880,7 +1880,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -2083,27 +2083,27 @@ JSON структура
         <tr>
             <td colspan="2">access_token</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ключ сессии аутентификации</td>
         </tr>
         <tr>
             <td colspan="2">call_session_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
                 методов start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
             </td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Проигрывание сообщения вызывающему абоненту</td>
+            <td colspan="6">Проигрывание сообщения вызывающему абоненту</td>
         </tr>
         <tr>
             <td colspan="2">contact_message</td>
             <td>object</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 Определяет параметры сообщения, которое необходимо проиграть вызывающему абоненту. 
                 Вызывающий абонент - это номер, указанный в параметре <code>contact</code> в методах 
@@ -2117,8 +2117,8 @@ JSON структура
             <td></td>
             <td>type</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">media, tts</td>
+            <td>да</td>
+            <td>media, tts</td>
             <td>
                 <p>Определяет тип сообщения. <code>media</code> - файл или <code>tts</code> - текст для услуги синтеза речи Text-to-Speech.</p>
             </td>
@@ -2127,8 +2127,8 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Если поле <code>type</code> имеет значение <code>media</code>, то в качестве значения принимается идентификатор файла для
                     проигрывания. Файл для проигрывания может быть системным или пользовательским. Идентификатор
@@ -2137,7 +2137,7 @@ JSON структура
                 <p>Если поле <code>type</code> имеет значение <code>tts</code>, то в качестве значения принимается текст для синтезирования его в
                     голосовое сообщение.
                 </p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
+                <div><i></i> Длина TTS сообщения регулируется тарифным планом и установленным лимитом.</div>
             </td>
         </tr>
     </tbody>
@@ -2737,13 +2737,13 @@ JSON структура
         <tr>
             <td colspan="2">button</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td>Клавиша, которая вызывает опцию разговора</td>
         </tr>
         <tr>
             <td colspan="2">mnemonic</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td>
                 Мнемоническое имя опции разговора
                 Возможные значения:
@@ -2770,30 +2770,30 @@ JSON структура
         <tr>
             <td colspan="2">name</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td>Название опции разговора</td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Значение опции</td>
+            <td colspan="6">Значение опции</td>
         </tr>
         <tr>
             <td colspan="2">button_value</td>
             <td>object</td>
-            <td class="text-center">нет</td>
+            <td>нет</td>
             <td>Некоторые опции могут содержать название тега, название сценария и т.д. Данный объект содержит дополнительную информацию об опции разговора</td>
         </tr>
         <tr>
             <td width="15"></td>
             <td>id</td>
             <td>number</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td>Уникальный идентификатор объекта, котрый активируется при вызове опции разговора. К примеру, идентификатор сценария</td>
         </tr>
         <tr>
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td>Название объекта, который активируется при вызове опции разговора. К примеру, название сценария</td>
         </tr>
     </tbody>
@@ -2874,8 +2874,8 @@ JSON структура
         <tr>
             <td colspan="2">call_session_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 Уникальный идентификатор сессии звонка, который может быть получен в ответном сообщении при вызове 
                 методов start.informer_call, start.vnumber_call, start.scenario_call, start.employee_call, с помощью сервера уведомлений или REST API.
@@ -2884,128 +2884,128 @@ JSON структура
         <tr>
             <td colspan="2">direction</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center">in, out</td>
+            <td>да</td>
+            <td>in, out</td>
             <td>Направление сесси звонка</td>
         </tr>
         <tr>
             <td colspan="2">start_time</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Время начала вызова. Формат <code>YYYY-MM-DD hh:mm:ss</code></td>
         </tr>
         <tr>
             <td colspan="2">virtual_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Виртуальный номер, который был использован как номер представления.</td>
         </tr>
         <tr>
             <td colspan="2">contact_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Номер абонента</td>
         </tr>
         <tr>
             <td colspan="2">external_id</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор запроса во внешней системе клиента</td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Список проставленных тегов</td>
+            <td colspan="6">Список проставленных тегов</td>
         </tr>
         <tr>
             <td colspan="2">tags</td>
             <td>array</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Список проставленных тегов</td>
         </tr>
         <tr>
             <td width="15"></td>
             <td>tag_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор тега</td>
         </tr>
         <tr>
             <td></td>
             <td>tag_name</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Имя тега</td>
         </tr>
         <tr>
-            <td class="color-bg" colspan="6">Участники сессии звонка</td>
+            <td colspan="6">Участники сессии звонка</td>
         </tr>
         <tr>
             <td colspan="2">legs</td>
             <td>array</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Список участников сессии звонка</td>
         </tr>
         <tr>
             <td></td>
             <td>leg_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор плеча</td>
         </tr>
         <tr>
             <td></td>
             <td>calling_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Номер вызывающего абонента</td>
         </tr>
         <tr>
             <td></td>
             <td>called_phone_number</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Номер вызываемого абонента</td>
         </tr>
         <tr>
             <td></td>
             <td>is_operator</td>
             <td>boolean</td>
-            <td class="text-center">да</td>
-            <td class="text-center">true, false</td>
+            <td>да</td>
+            <td>true, false</td>
             <td>Признак, который идентифицирует плечо, у которого есть права на выполнение опций разговора</td>
         </tr>
         <tr>
             <td></td>
             <td>employee_id</td>
             <td>number</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Уникальный идентификатор сотрудника</td>
         </tr>
         <tr>
             <td></td>
             <td>employee_full_name</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>Ф.И.О сотрудника</td>
         </tr>
         <tr>
             <td></td>
             <td>record_call_enabled</td>
             <td>boolean</td>
-            <td class="text-center">да</td>
-            <td class="text-center">true, false</td>
+            <td>да</td>
+            <td>true, false</td>
             <td>
                 <p>Включена/Выключена запись разговора.<br> <code>true</code> - включена, <code>false</code> - выключена</p>
             </td>
@@ -3014,8 +3014,8 @@ JSON структура
             <td></td>
             <td>state</td>
             <td>string</td>
-            <td class="text-center">да</td>
-            <td class="text-center"></td>
+            <td>да</td>
+            <td></td>
             <td>
                 <p>Состояние участника разговора</p>
                 Возможные значения:
@@ -3181,7 +3181,7 @@ JSON структура
         <tr>
             <td colspan="3">error</td>
             <td>object</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td></td>
             <td>Объект с содержимым ошибки</td>
         </tr>
@@ -3189,7 +3189,7 @@ JSON структура
             <td width="15"></td>
             <td colspan="2">code</td>
             <td>number</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td></td>
             <td>Код ошибки (см. раздел Группы кодов ошибок)</td>
         </tr>
@@ -3197,7 +3197,7 @@ JSON структура
             <td></td>
             <td colspan="2">message</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td></td>
             <td>Сообщение об ошибке (см. раздел Список ошибок общих для всех методов)</td>
         </tr>
@@ -3205,7 +3205,7 @@ JSON структура
             <td></td>
             <td colspan="2">data</td>
             <td>object</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td></td>
             <td>Объект с деталями ошибки</td>
         </tr>
@@ -3214,7 +3214,7 @@ JSON структура
             <td width="15"></td>
             <td>mnemonic</td>
             <td>string</td>
-            <td class="text-center">да</td>
+            <td>да</td>
             <td></td>
             <td>Уникальный текстовый код ошибки (см. раздел Список ошибок общих для всех методов, а так же существуют ошибки специфичные для отдельных методов)</td>
         </tr>
@@ -3223,12 +3223,12 @@ JSON структура
             <td></td>
             <td>field</td>
             <td>string</td>
-            <td class="text-center">нет</td>
+            <td>нет</td>
             <td></td>
             <td>
                 <p>Название параметра, с которым связана ошибка</p>
-                <div class="bs-callout bs-callout-info">
-                    <p><i class="fa fa-info-circle on"></i> Вложенные параметры отображаем через разделитель "точка": <code>.</code></p>
+                <div>
+                    <p><i></i> Вложенные параметры отображаем через разделитель "точка": <code>.</code></p>
                     <p>К примеру: <code>employee.phone_number</code></p>
                 </div>
             </td>
@@ -3238,11 +3238,11 @@ JSON структура
             <td></td>
             <td>value</td>
             <td>string</td>
-            <td class="text-center">нет</td>
+            <td>нет</td>
             <td></td>
             <td>
                 <p>Содержит то, что передал пользователь без изменений</p>
-                <div class="bs-callout bs-callout-info"><i class="fa fa-info-circle on"></i> В некоторых случаях может отсутствовать. К примеру, обязательный параметр вообще не был заполнен.</div>
+                <div><i></i> В некоторых случаях может отсутствовать. К примеру, обязательный параметр вообще не был заполнен.</div>
             </td>
         </tr>
         <tr>
@@ -3250,7 +3250,7 @@ JSON структура
             <td></td>
             <td>params</td>
             <td>object</td>
-            <td class="text-center">нет</td>
+            <td>нет</td>
             <td></td>
             <td>Карта подстановок параметров для шаблона с текстом об ошибке. Т.е. содержит динамически изменяемые значения, к примеру, лимиты, длина TTS сообщения. Значения указанные в этом параметре могут быть использованы в сообщениях об ошибках в интерфейсе над Call API (рабочее место оператора).</td>
         </tr>
@@ -3259,7 +3259,7 @@ JSON структура
             <td></td>
             <td>extended_helper</td>
             <td>string</td>
-            <td class="text-center">нет</td>
+            <td>нет</td>
             <td></td>
             <td>Ссылка на более подробное описание ошибки и возможные решения</td>
         </tr>
