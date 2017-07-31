@@ -23,7 +23,7 @@ http://crm11.getsandbox.com/crm_integration?cdr_id=123&start_time=1200&input_res
 *   `numa` — номер звонящего;
 *   `numb` — номер, на который звонят.
 
-[![](https://www.comagic.ru/documentation/pic/iov-pic-1.jpg)](#)
+[![](https://github.com/andrey149502/comagic-api/blob/master/images/iov-pic-1.jpg)](#)
 
 Сервер должен прислать успешный (со статусом 200) http-ответ, в котором будет инструкция для виртуальной АТС — JSON-структура одного из следующих форматов:
 
@@ -93,13 +93,13 @@ http://crm11.getsandbox.com/crm_integration?cdr_id=123&start_time=1200&input_res
 
 Используйте, когда необходимо направить обработку вызова по одному из привязанных сценариев. Можно выбрать несколько кодов возврата, обрабатываемых последовательно.
 
-[![](https://www.comagic.ru/documentation/pic/iov-pic-2.jpg)](#)
+[![](https://github.com/andrey149502/comagic-api/blob/master/images/iov-pic-2.jpg)](#)
 
 ## Настройка виртуальной АТС
 
 В сценарии виртуальной АТС создайте операцию интерактивной обработки вызова.
 
-[![](https://www.comagic.ru/documentation/pic/iov-pic-3.jpg)](#)
+[![](https://github.com/andrey149502/comagic-api/blob/master/images/iov-pic-3.jpg)](#)
 
 В этом сценарии необходимо задать:
 *   URL, по которому можно связываться с обработчиком запросов;
